@@ -22,7 +22,7 @@ seed: vendor/autoload.php ## Seed database
 	symfony console app:seed -q
 
 .PHONY: tests
-tests: vendor/autoload.php ## Run tests
+tests: vendor/autoload.php public/assets ## Run tests
 	$(php) bin/phpunit --testdox
 
 # -----------------------------------
@@ -31,5 +31,8 @@ tests: vendor/autoload.php ## Run tests
 vendor/autoload.php: composer.lock
 	$(php) composer install
 
-node_modules/time: pnpm-lock.yaml
+node_modules: pnpm-lock.yaml
 	$(node) pnpm install
+
+public/assets: node_modules
+	$(node) pnpm run build
