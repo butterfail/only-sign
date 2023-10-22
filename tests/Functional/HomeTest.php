@@ -12,6 +12,6 @@ class HomeTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Hello HomeController');
+        $this->assertSelectorTextContains('h1', 'Revolutionize your sign-in procedures with our digital solution');
     }
 }
